@@ -33,7 +33,7 @@
 	  <!-- Principal -->
 	  <div class="jumbotron">
 		<h1 class="display-4"><img src="../img/sys.svg">Sistemas de control de versiones Distribuidos</h1><br>
-		<p class="lead">Los sistemas de control de versiones distribuidos (DVCS) no dependen de un servidor central. Permiten a los desarrolladores clonar el repositorio y trabajar en esa versión. Los desarrolladores tendrán la historia completa del proyecto en sus propios discos duros.</p>
+		<p class="lead"><canvas id="lienzo" width="40" height="40"></canvas>Los sistemas de control de versiones distribuidos (DVCS) no dependen de un servidor central. Permiten a los desarrolladores clonar el repositorio y trabajar en esa versión. Los desarrolladores tendrán la historia completa del proyecto en sus propios discos duros.</p>
         <hr class="my-4">
         <div class="row">
             <div class="col-sm-6">
@@ -62,7 +62,30 @@
             </div>
           </div><br>
           <a class="btn btn-primary btn-lg" href="centralizado.html" role="button">Centralizados (CVCS)</a>
-	  </div>
+    </div>
+    <!-- canvas -->
+    <script type="text/javascript">
+      var n = 3;
+      var radio = 15;
+      var cx = 20;
+      var cy = 20;
+      var f = Math.PI / n * 2;
+      var cv, ctx;
+      var smallRadius = 2;
+      window.onload = function() {
+        cv = document.getElementById('lienzo');
+        ctx = cv.getContext('2d');
+        ctx.fillStyle = 'black';
+        for (var i = 0; i < n; i++) {
+          var x = radio * Math.cos(i * f) + cx;
+          var y = radio * Math.sin(i * f) + cy;
+          ctx.beginPath();
+          ctx.arc(x, y, smallRadius, 0, Math.PI * 2, 0);
+          ctx.fill();
+        }
+      };
+    </script>
+    <!-- canvas -->
      
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
